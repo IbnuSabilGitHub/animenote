@@ -8,6 +8,7 @@ function About() {
         className="w-[50rem] rounded-lg"
         src='https://media.tenor.com/FrXVfMs5tg0AAAAM/apa-coba-haerin.gif'
         alt='APA COBA'
+        loading="lazy"
           />
           <figcaption className="mt-2 text-xl font-bold text-center text-gray-500 dark:text-gray-400">
             APA COBA!!

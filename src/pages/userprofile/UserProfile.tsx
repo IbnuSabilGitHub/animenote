@@ -38,6 +38,8 @@ function UserProfile() {
               className="w-[50rem] rounded-lg"
               src={gif.url}
               alt={gif.name}
+              loading="lazy"
+              
             />
             <figcaption className="mt-2 text-xl font-bold text-center text-gray-500 dark:text-gray-400">
               {gif.name + " From " + id}

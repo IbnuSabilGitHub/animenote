@@ -28,7 +28,7 @@ function Home() {
         </a>
       </div>
       <h1 className="text-3xl font-bold mt-6">ANIME NOTE</h1>
-      <div className="mt-4 p-6 bg-gray-800 rounded-lg shadow-lg text-center">
+      <div className="mt-4 p-6 bg-zinc-800 rounded-lg shadow-lg text-center">
         <button
           onClick={() => setCount((count) => count + 1)}
           className="px-6 py-2 bg-blue-500 hover:bg-blue-600 transition-colors rounded-lg text-white font-semibold"
@@ -36,11 +36,11 @@ function Home() {
           count is {count}
         </button>
         <p className="mt-3 text-gray-300">
-          Edit <code className="text-pink-400">src/Home.jsx</code> and save to test HMR
+          Hello, <code className="text-pink-400">user</code> welcome to Anime Note
         </p>
       </div>
       <p className="mt-6 text-gray-400 text-sm">
-        Click on the Vite and React logos to learn more
+        Click on logos to learn more
       </p>
     </div>
   );

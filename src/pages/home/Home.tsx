@@ -5,6 +5,10 @@ import vercelLogo from "../../assets/svg/vercel.svg"
 import tailwindLogo from "../../assets/svg/tailwind.svg";
 import muiLogo from "../../assets/svg/mui.svg";
 import "../../styles/home.css";
+import "../../components/ShinyText";
+import ShinyText from "../../components/ShinyText";
+
+
 function Home() {
   const [count, setCount] = useState(0);
 
@@ -39,9 +43,7 @@ function Home() {
           Hello, <code className="text-pink-400">user</code> welcome to Anime Note
         </p>
       </div>
-      <p className="mt-6 text-gray-400 text-sm">
-        Click on logos to learn more
-      </p>
+      <ShinyText text="Click on logos to learn more" disabled={false} speed={3} className='custom-class'/>
     </div>
   );
 }

@@ -26,7 +26,7 @@ function UserProfile() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       {isLoading ? (
-        // Loading animation
+        // Skeleton
         <div
           role="status"
           className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
@@ -48,7 +48,6 @@ function UserProfile() {
         </div>
       ) : (
         // Display the GIF once loaded
-
         <figure className="max-w-lg mx-auto">
           <img
             className="w-[50rem] rounded-lg"

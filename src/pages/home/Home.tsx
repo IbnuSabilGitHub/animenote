@@ -74,7 +74,7 @@ function Home() {
           className="px-6 py-2 bg-nutral-800 hover:bg-neutral-700 transition-colors rounded-lg border border-neutral-600"
         >
           <ShinyText
-            text="Counter"
+            text={`Click me ${count}`}
             disabled={false}
             speed={3}
             className="custom-class"

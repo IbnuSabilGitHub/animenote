@@ -65,12 +65,20 @@ function Home() {
         className="text-3xl font-bold"
         encryptedClassName="text-3xl font-bold"
       />
-      <SpotlightCard spotlightColor="rgba(0, 132, 209, 0.2)" className="mt-4 p-6 rounded-lg shadow-lg text-center">
+      <SpotlightCard
+        spotlightColor="rgba(0, 132, 209, 0.2)"
+        className="mt-4 p-6 rounded-lg shadow-lg text-center"
+      >
         <button
           onClick={() => setCount((count) => count + 1)}
-          className="px-6 py-2 bg-blue-500 hover:bg-blue-600 transition-colors rounded-lg text-white font-semibold"
+          className="px-6 py-2 bg-nutral-800 hover:bg-neutral-700 transition-colors rounded-lg border border-neutral-600"
         >
-          count is {count}
+          <ShinyText
+            text="Counter"
+            disabled={false}
+            speed={3}
+            className="custom-class"
+          />
         </button>
         <p className="mt-3 text-gray-300">
           Hello, <code className="text-pink-400">user</code> welcome to Anime

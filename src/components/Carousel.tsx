@@ -27,36 +27,37 @@ export interface CarouselProps {
 
 const DEFAULT_ITEMS: CarouselItem[] = [
   {
-    title: "Text Animations",
-    description: "Cool text animations for your projects.",
+    title: "React",
+    description: "A JavaScript library for building user interfaces.",
     id: 1,
     icon: <img src={reactLogo} alt="React Icon" width={24} height={24} className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "Animations",
-    description: "Smooth animations for your projects.",
+    title: "Vite",
+    description: "A fast build tool for modern web applications.",
     id: 2,
-    icon: <img src={viteLogo} alt="React Icon" width={24} height={24} className="h-[16px] w-[16px] text-white" />,
+    icon: <img src={viteLogo} alt="Vite Icon" width={24} height={24} className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "Components",
-    description: "Reusable components for your projects.",
+    title: "Vercel",
+    description: "A cloud platform for frontend frameworks and static sites.",
     id: 3,
-    icon: <img src={vercelLogo} alt="React Icon" width={24} height={24} className="h-[16px] w-[16px] text-white" />,
+    icon: <img src={vercelLogo} alt="Vercel Icon" width={24} height={24} className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "Backgrounds",
-    description: "Beautiful backgrounds and patterns for your projects.",
+    title: "Tailwind CSS",
+    description: "A utility-first CSS framework for modern web design.",
     id: 4,
-    icon: <img src={tailwindLogo} alt="React Icon" width={24} height={24} className="h-[16px] w-[16px] text-white" />,
+    icon: <img src={tailwindLogo} alt="Tailwind CSS Icon" width={24} height={24} className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "Common UI",
-    description: "Common UI components are coming soon!",
+    title: "Material UI",
+    description: "A popular React UI framework following Google's Material Design.",
     id: 5,
-    icon: <img src={muiLogo} alt="React Icon" width={24} height={24} className="h-[16px] w-[16px] text-white" />,
+    icon: <img src={muiLogo} alt="Material UI Icon" width={24} height={24} className="h-[16px] w-[16px] text-white" />,
   },
 ];
+
 
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;

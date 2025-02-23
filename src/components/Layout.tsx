@@ -13,8 +13,8 @@ export default function Layout() {
       <CssBaseline />
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column-reverse",
+          // display: "flex",
+          // flexDirection: "column-reverse",
           height: "100vh",
         }}
       >
@@ -22,10 +22,11 @@ export default function Layout() {
         <Box
           sx={{
             width: 300,
+            mb: 2,
             position: "fixed",
-            m: 2,
-            justifyContent: "center",
-            alignSelf: "center",
+            bottom: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
           }}
         >
           <BottomNavigation
@@ -46,7 +47,7 @@ export default function Layout() {
           </BottomNavigation>
         </Box>
         {/* Konten Utama */}
-        <Box sx={{ flex: 1, p: 1 }}>
+        <Box sx={{ flex: 1, p: 1}}>
           <Outlet /> {/* Ini tempat konten halaman akan ditampilkan */}
         </Box>
       </Box>

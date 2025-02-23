@@ -1,7 +1,8 @@
+// Sorce code from
+// https://www.reactbits.dev/components/tilted-card
 import type { SpringOptions } from "framer-motion";
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import "./TiltedCard.css";
 
 interface TiltedCardProps {
   imageSrc: React.ComponentProps<"img">["src"];
@@ -41,7 +42,6 @@ export default function TiltedCard({
   displayOverlayContent = false,
 }: TiltedCardProps) {
   const ref = useRef<HTMLElement>(null);
-
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useSpring(useMotionValue(0), springValues);
@@ -54,7 +54,7 @@ export default function TiltedCard({
     mass: 1,
   });
 
-  const [lastY, setLastY] = useState<number>(0);
+  const [lastY, setLastY] = useState(0);
 
   function handleMouse(e: React.MouseEvent<HTMLElement>) {
     if (!ref.current) return;
@@ -93,7 +93,7 @@ export default function TiltedCard({
   return (
     <figure
       ref={ref}
-      className="tilted-card-figure"
+      className="relative w-full h-full [perspective:800px] flex flex-col items-center justify-center"
       style={{
         height: containerHeight,
         width: containerWidth,
@@ -103,13 +103,13 @@ export default function TiltedCard({
       onMouseLeave={handleMouseLeave}
     >
       {showMobileWarning && (
-        <div className="tilted-card-mobile-alert">
+        <div className="absolute top-4 text-center text-sm block sm:hidden">
           This effect is not optimized for mobile. Check on desktop.
         </div>
       )}
 
       <motion.div
-        className="tilted-card-inner"
+        className="relative [transform-style:preserve-3d]"
         style={{
           width: imageWidth,
           height: imageHeight,
@@ -121,7 +121,7 @@ export default function TiltedCard({
         <motion.img
           src={imageSrc}
           alt={altText}
-          className="tilted-card-img"
+          className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
           style={{
             width: imageWidth,
             height: imageHeight,
@@ -130,7 +130,7 @@ export default function TiltedCard({
 
         {displayOverlayContent && overlayContent && (
           <motion.div
-            className="tilted-card-overlay"
+            className="absolute top-0 left-0 z-[2] will-change-transform [transform:translateZ(30px)]"
           >
             {overlayContent}
           </motion.div>
@@ -139,7 +139,7 @@ export default function TiltedCard({
 
       {showTooltip && (
         <motion.figcaption
-          className="tilted-card-caption"
+          className="pointer-events-none absolute left-0 top-0 rounded-[4px] bg-white px-[10px] py-[4px] text-[10px] text-[#2d2d2d] opacity-0 z-[3] hidden sm:block"
           style={{
             x,
             y,

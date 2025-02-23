@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState, useRef } from "react";
 import { motion, PanInfo, useMotionValue, useTransform } from "framer-motion";
+import ShinyText from "./ShinyText";
 // replace icons with your own if needed
 import reactLogo from "../assets/svg/react.svg";
 import viteLogo from "../assets/svg/vite.svg";
@@ -12,6 +13,7 @@ export interface CarouselItem {
   title: string;
   description: string;
   id: number;
+  url: string;
   icon: JSX.Element;
 }
 
@@ -31,6 +33,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     title: "React",
     description: "A JavaScript library for building user interfaces.",
     id: 1,
+    url: "https://react.dev/",
     icon: (
       <img
         src={reactLogo}
@@ -45,6 +48,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     title: "Vite",
     description: "A fast build tool for modern web applications.",
     id: 2,
+    url: "https://vitejs.dev/",
     icon: (
       <img
         src={viteLogo}
@@ -59,6 +63,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     title: "Vercel",
     description: "A cloud platform for frontend frameworks and static sites.",
     id: 3,
+    url: "https://vercel.com/",
     icon: (
       <img
         src={vercelLogo}
@@ -73,6 +78,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     title: "Tailwind CSS",
     description: "A utility-first CSS framework for modern web design.",
     id: 4,
+    url: "https://tailwindcss.com/",
     icon: (
       <img
         src={tailwindLogo}
@@ -88,6 +94,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     description:
       "A popular React UI framework following Google's Material Design.",
     id: 5,
+    url: "https://mui.com/",
     icon: (
       <img
         src={muiLogo}
@@ -99,6 +106,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     ),
   },
 ];
+
 
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
@@ -303,7 +311,7 @@ export default function Carousel({
                 round
                   ? "items-center justify-center text-center bg-[#060606] border-0"
                   : "items-start justify-between bg-[#222] border border-[#222] rounded-[12px]"
-              } overflow-hidden cursor-pointer active:cursor-grabbing`}
+              } overflow-hidden cursor-grab active:cursor-grabbing`}
               style={{
                 width: itemWidth,
                 height: round ? itemWidth : "100%",
@@ -312,10 +320,40 @@ export default function Carousel({
               }}
               transition={effectiveTransition}
             >
-              <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
-                <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060606]">
-                  {item.icon}
-                </span>
+              <div className="flex justify-between items-baseline w-full p-5 ">
+                <div className={`${round ? "p-0 m-0" : "mb-4"}`}>
+                  <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060606]">
+                    {item.icon}
+                  </span>
+                </div>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className=" inline-flex text-center gap-0.5 items-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="text-neutral-400"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                  <ShinyText
+                    text={`Learn more`}
+                    disabled={false}
+                    speed={3}
+                    className="text-xs"
+                  />
+                </a>
               </div>
               <div className="p-5">
                 <div className="mb-1 font-black text-lg text-white">

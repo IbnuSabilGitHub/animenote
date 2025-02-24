@@ -13,28 +13,28 @@ interface DockItem {
 
 const items = (navigate: (path: string) => void): DockItem[] => [
   {
-    icon: <i className="fa-solid fa-house fa-xs"></i>,
+    icon: <i className="fa-solid fa-house text-xs md:text-sm"></i>,
     label: "Home",
     onClick: () => navigate("/"),
-    className: "rounded-lg",
+    className: "rounded-lg active:bg-neutral-900 transition-colors",
   },
   {
-    icon: <i className="fa-solid fa-person fa-xs"></i>,
+    icon: <i className="fa-solid fa-person text-xs md:text-sm"></i>,
     label: "About",
     onClick: () => navigate("/About"),
-    className: "rounded-lg",
+    className: "rounded-lg active:bg-neutral-900 transition-colors",
   },
   {
-    icon: <i className="fa-solid fa-circle-user fa-xs"></i>,
+    icon: <i className="fa-solid fa-circle-user text-xs md:text-sm"></i>,
     label: "Profile",
     onClick: () => navigate("/user/ADMIN"),
-    className: "rounded-lg",
+    className: "rounded-lg active:bg-neutral-900 transition-colors",
   },
   {
-    icon: <i className="fa-solid fa-gear fa-xs"></i>,
+    icon: <i className="fa-solid fa-gear text-xs md:text-sm"></i>,
     label: "Settings",
     onClick: () => navigate("/Settings"),
-    className: "rounded-lg",
+    className: "rounded-lg active:bg-neutral-900 transition-colors",
   },
 ];
 

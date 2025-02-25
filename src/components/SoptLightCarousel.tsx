@@ -138,7 +138,6 @@ export default function Carousel({
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isResetting, setIsResetting] = useState<boolean>(false);
 
-  const divRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState<number>(0);
@@ -235,9 +234,9 @@ export default function Carousel({
   });
 
   const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    if (!divRef.current || isFocused) return;
+    if (!containerRef.current || isFocused) return;
 
-    const rect = divRef.current.getBoundingClientRect();
+    const rect = containerRef.current.getBoundingClientRect();
     setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
@@ -261,7 +260,7 @@ export default function Carousel({
 
   return (
     <div
-      ref={divRef}
+      ref={containerRef}
       className={`relative overflow-hidden p-4 ${
         round
           ? "rounded-full border border-white"

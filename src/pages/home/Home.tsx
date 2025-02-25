@@ -5,7 +5,7 @@ import SpotlightCarousel from "../../components/SoptLightCarousel";
 import { useState, useEffect } from "react";
 
 function Home() {
-  const [baseWidth, setBaseWidth] = useState(900); 
+  const [baseWidth, setBaseWidth] = useState(() => Math.min(900, window.innerWidth * 0.8));
 
   useEffect(() => {
     

@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/styled": "^11.14.0",
     "@tailwindcss/vite": "^4.0.7",
     "framer-motion": "^12.4.7",
     "next": "^15.1.7",

@@ -268,7 +268,7 @@ export default function Carousel({
           : "rounded-[24px] border border-[#222]"
       }`}
       style={{
-        width: `${baseWidth}px`,
+        width: `${baseWidth}`,
         ...(round && { height: `${baseWidth}px` }),
       }}
       onMouseMove={handleMouseMove}

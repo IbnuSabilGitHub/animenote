@@ -24,7 +24,7 @@ function Home() {
         <SpotlightCarousel
           baseWidth={width > 768 ? 900 : 400}
           autoplay={true}
-          autoplayDelay={3000}
+          autoplayDelay={5000}
           pauseOnHover={true}
           loop={true}
           round={false}

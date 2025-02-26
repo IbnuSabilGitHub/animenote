@@ -2,34 +2,36 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function UserProfile() {
-  const [gif, setGif] = useState<{ url: string; name: string }>({
-    url: "",
-    name: "",
-  });
-  const [isLoading, setIsLoading] = useState(true); // New state for loading status
-  const { id } = useParams(); // Destructure the id from useParams
+  const [selectedGif, setSelectedGif] = useState<{ url: string; name: string } | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { id } = useParams();
 
   useEffect(() => {
-    setTimeout(() => {
+    const cachedGifs = localStorage.getItem("gifs");
+
+    if (cachedGifs) {
+      const parsedGifs = JSON.parse(cachedGifs);
+      setSelectedGif(parsedGifs[Math.floor(Math.random() * parsedGifs.length)]);
+      setIsLoading(false);
+    } else {
       fetch("/urlGif.json")
         .then((response) => response.json())
         .then((data) => {
-          const randomGif = data[Math.floor(Math.random() * data.length)];
-          setGif(randomGif);
-          setIsLoading(false); // Set loading to false once the image is fetched
+          localStorage.setItem("gifs", JSON.stringify(data)); // Simpan di localStorage
+          setSelectedGif(data[Math.floor(Math.random() * data.length)]);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error("Error fetching GIF:", error);
-          setIsLoading(false); // Ensure loading is set to false even if there's an error
+          setIsLoading(false);
         });
-    }, 2000); // Add a delay of 2 seconds to simulate a slow network
+    }
   }, []);
 
   return (
     <div className="flex items-center justify-center min-h-screen">
       <figure className="max-w-lg mx-auto flex flex-col items-center justify-center space-y-2">
         {isLoading ? (
-          // Skeleton
           <div
             role="status"
             className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
@@ -47,19 +49,18 @@ function UserProfile() {
             </div>
           </div>
         ) : (
-          // Display the GIF once loaded
           <img
             className="w-[50rem] rounded-lg"
-            src={gif.url}
-            alt={gif.name}
+            src={selectedGif?.url}
+            alt={selectedGif?.name}
             loading="lazy"
           />
         )}
         {isLoading ? (
           <div className="h-5 bg-gray-200 rounded-sm dark:bg-zinc-800 w-[80%]"></div>
         ) : (
-          <figcaption className=" text-xl font-bold text-center text-gray-500 dark:text-gray-400">
-            {gif.name + " From " + id}
+          <figcaption className="text-xl font-bold text-center text-gray-500 dark:text-gray-400">
+            {selectedGif?.name + " From " + id}
           </figcaption>
         )}
       </figure>
@@ -68,6 +69,3 @@ function UserProfile() {
 }
 
 export default UserProfile;
-{
-  /* <div className="h-5 bg-gray-200 rounded-sm dark:bg-zinc-800 w-[80%] mt-2"></div> */
-}

@@ -54,7 +54,7 @@ export default function Layout() {
 
   return (
     <div>
-      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-1">
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-1 z-999">
         {width > 768 ? (
           <Dock
             items={items(navigate)}

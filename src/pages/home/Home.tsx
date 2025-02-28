@@ -33,7 +33,7 @@ function Home() {
       <div className="h-[100vh] w-full flex items-center justify-center">
         <div className="inline-flex text-center gap-4 items-center">
           <SplitText
-            text="Hello!"
+            text="Hello,"
             className="text-3xl sm:text-3xl md:text-7xl font-semibold text-center"
             delay={100}
             animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
@@ -51,8 +51,8 @@ function Home() {
             animateOpacity
             >
               <RotatingText
-                texts={["React", "Vite", "Tailwind", "Material Ui", "Vercel"]}
-                mainClassName="px-2 sm:px-2 md:px-3 bg-sky-500/30 text-sky-500 overflow-hidden py-0.5 sm:py-1 md:py-0 justify-center rounded-lg border border-sky-500"
+                texts={["User!", "Everyone!", "Sir!", "Miss!", "Friend!", "Bro!", "Wibu!", "Otaku!", "Coder!"]}
+                mainClassName="px-2 sm:px-2 md:px-3 bg-sky-500/30 text-sky-500 overflow-hidden py-0.5 sm:py-1 md:py-1 justify-center rounded-lg border border-sky-500"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}

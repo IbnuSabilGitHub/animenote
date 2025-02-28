@@ -44,11 +44,10 @@ function Home() {
           />
           {animationComplete && (
             <AnimatedContent
-            distance={150}
+            distance={300}
             direction="horizontal"
             reverse={false}
             config={{ tension: 80, friction: 20 }}
-            initialOpacity={0.2}
             animateOpacity
             >
               <RotatingText

@@ -34,7 +34,7 @@ function Home() {
         <div className="inline-flex text-center gap-4 items-center">
           <SplitText
             text="Hello!"
-            className="text-7xl font-semibold text-center"
+            className="text-3xl sm:text-3xl md:text-7xl font-semibold text-center"
             delay={100}
             animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
             animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}

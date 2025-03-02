@@ -6,6 +6,7 @@ import SplitText from "../../components/SplitText";
 import { useState, useEffect } from "react";
 import RotatingText from "../../components/RotatingText";
 import AnimatedContent from "../../components/AnimatedContent";
+import Counter from "../../components/CounterAnimation";
 
 function Home() {
   const [baseWidth, setBaseWidth] = useState(() =>
@@ -44,14 +45,24 @@ function Home() {
           />
           {animationComplete && (
             <AnimatedContent
-            distance={300}
-            direction="horizontal"
-            reverse={false}
-            config={{ tension: 80, friction: 20 }}
-            animateOpacity
+              distance={300}
+              direction="horizontal"
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              animateOpacity
             >
               <RotatingText
-                texts={["User!", "Everyone!", "Sir!", "Miss!", "Friend!", "Bro!", "Wibu!", "Otaku!", "Coder!"]}
+                texts={[
+                  "User!",
+                  "Everyone!",
+                  "Sir!",
+                  "Miss!",
+                  "Friend!",
+                  "Bro!",
+                  "Wibu!",
+                  "Otaku!",
+                  "Coder!",
+                ]}
                 mainClassName="px-2 sm:px-2 md:px-3 bg-sky-500/30 text-sky-500 overflow-hidden py-0.5 sm:py-1 md:py-1 justify-center rounded-lg border border-sky-500"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
@@ -78,6 +89,17 @@ function Home() {
           spotlightColor="rgba(0, 132, 209, 0.25)"
         />
         <ShinyText text="Technology" className="text-3xl font-bold mb-4" />
+      </div>
+      <div className="flex flex-col items-center justify-center space-y-8 h-[100vh] w-full">
+        <Counter
+          value={2}
+          places={[100, 10, 1]}
+          fontSize={80}
+          padding={5}
+          gap={10}
+          textColor="white"
+          fontWeight={900}
+        />
       </div>
     </div>
   );

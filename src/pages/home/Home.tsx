@@ -12,10 +12,19 @@ function Home() {
   const [baseWidth, setBaseWidth] = useState(() =>
     Math.min(900, window.innerWidth * 0.8)
   );
+  const [counterValue, setCounterValue] = useState(0);
   const [animationComplete, setAnimationComplete] = useState(false);
 
   function handleAnimationComplete() {
     setAnimationComplete(true);
+  }
+  
+  function handleCounterPlus() {
+    setCounterValue((prev) => (prev >= 100 ? 0 : prev + 1));
+  }
+
+  function handleCounterMinus() {
+    setCounterValue((prev) => (prev <= 0 ? 100 : prev - 1));
   }
 
   useEffect(() => {
@@ -91,15 +100,27 @@ function Home() {
         <ShinyText text="Technology" className="text-3xl font-bold mb-4" />
       </div>
       <div className="flex flex-col items-center justify-center space-y-8 h-[100vh] w-full">
-        <Counter
-          value={2}
-          places={[100, 10, 1]}
-          fontSize={80}
-          padding={5}
-          gap={10}
-          textColor="white"
-          fontWeight={900}
-        />
+        <div className="inline-flex text-center gap-1 items-center">
+          <button className="flex items-center justify-center text-sky-500 md:text-4xl bg-sky-500/30 hover:bg-sky-500/20 active:bg-sky-500/10 rounded-lg p-7 border border-sky-500" onClick={() => handleCounterMinus()}>
+            <i className="fa-solid fa-minus"></i>
+          </button>
+          <Counter
+            value={counterValue} // karena jika nilai nol di kurang lagi maka nilai akan 999. saya tidak ingin itu saya ingin 100
+            places={[100, 10, 1]}
+            fontSize={80}
+            padding={10}
+            gap={10}
+            textColor="rgb(14, 165, 233)"
+            fontWeight={600}
+            containerStyle={{ backgroundColor: "rgba(14, 165, 233, 0.3)", borderRadius: 8, border: "1px solid rgb(14, 165, 233)" }}
+            gradientHeight={16}
+            gradientFrom="transparent"
+          />
+
+          <button className="flex items-center justify-center md:text-4xl text-sky-500 bg-sky-500/30 hover:bg-sky-500/20 active:bg-sky-500/10 rounded-lg p-7 border border-sky-500" onClick={() => handleCounterPlus()}>
+            <i className="fa-solid fa-plus"></i>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -12,6 +12,8 @@ function Home() {
   const [baseWidth, setBaseWidth] = useState(() =>
     Math.min(900, window.innerWidth * 0.8)
   );
+  const [width, setWidth] = useState(window.innerWidth);
+
   const [counterValue, setCounterValue] = useState(0);
   const [animationComplete, setAnimationComplete] = useState(false);
 
@@ -36,6 +38,19 @@ function Home() {
     window.addEventListener("resize", updateWidth);
 
     return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
@@ -81,7 +96,7 @@ function Home() {
                 splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
                 transition={{ type: "spring", damping: 30, stiffness: 400 }}
                 rotationInterval={2000}
-                elementLevelClassName="text-3xl sm:text-3xl md:text-7xl font-bold"
+                elementLevelClassName="text-3xl sm:text-3xl md:text-7xl font-semibold"
               />
             </AnimatedContent>
           )}
@@ -107,11 +122,11 @@ function Home() {
           <Counter
             value={counterValue} // karena jika nilai nol di kurang lagi maka nilai akan 999. saya tidak ingin itu saya ingin 100
             places={[100, 10, 1]}
-            fontSize={80}
+            fontSize={width > 768 ? 80 : 60}
             padding={10}
             gap={10}
             textColor="rgb(14, 165, 233)"
-            fontWeight={600}
+            fontWeight={500}
             containerStyle={{ backgroundColor: "rgba(14, 165, 233, 0.3)", borderRadius: 8, border: "1px solid rgb(14, 165, 233)" }}
             gradientHeight={16}
             gradientFrom="transparent"

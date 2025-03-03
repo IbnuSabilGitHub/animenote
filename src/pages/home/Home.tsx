@@ -7,12 +7,13 @@ import { useState, useEffect } from "react";
 import RotatingText from "../../components/RotatingText";
 import AnimatedContent from "../../components/AnimatedContent";
 import Counter from "../../components/CounterAnimation";
+import useMediaQuery from "../../utils/useMediaQuery";
 
 function Home() {
   const [baseWidth, setBaseWidth] = useState(() =>
     Math.min(900, window.innerWidth * 0.8)
   );
-  const [width, setWidth] = useState(window.innerWidth);
+  const isLargeScreen = useMediaQuery("(min-width: 768px)");
 
   const [counterValue, setCounterValue] = useState(0);
   const [animationComplete, setAnimationComplete] = useState(false);
@@ -40,18 +41,6 @@ function Home() {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-white">
@@ -122,7 +111,7 @@ function Home() {
           <Counter
             value={counterValue} // karena jika nilai nol di kurang lagi maka nilai akan 999. saya tidak ingin itu saya ingin 100
             places={[100, 10, 1]}
-            fontSize={width > 768 ? 80 : 60}
+            fontSize={isLargeScreen ? 80 : 60}
             padding={10}
             gap={10}
             textColor="rgb(14, 165, 233)"

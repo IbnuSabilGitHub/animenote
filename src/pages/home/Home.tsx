@@ -48,7 +48,7 @@ function Home() {
         <div className="inline-flex text-center gap-4 items-center">
           <SplitText
             text="Hello,"
-            className="text-3xl sm:text-3xl md:text-7xl font-semibold text-center"
+            className="text-5xl md:text-7xl font-semibold text-center"
             delay={100}
             animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
             animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
@@ -58,7 +58,7 @@ function Home() {
           />
           {animationComplete && (
             <AnimatedContent
-              distance={300}
+              distance={100}
               direction="horizontal"
               reverse={false}
               config={{ tension: 80, friction: 20 }}
@@ -85,7 +85,7 @@ function Home() {
                 splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
                 transition={{ type: "spring", damping: 30, stiffness: 400 }}
                 rotationInterval={2000}
-                elementLevelClassName="text-3xl sm:text-3xl md:text-7xl font-semibold"
+                elementLevelClassName="text-5xl md:text-7xl font-semibold"
               />
             </AnimatedContent>
           )}

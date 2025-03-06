@@ -31,7 +31,7 @@ const items = (navigate: (path: string) => void): DockItem[] => [
   {
     icon: <i className="fa-solid fa-gear text-xs md:text-sm text-amber-50"></i>,
     label: "Settings",
-    onClick: () => navigate("/Settings"),
+    onClick: () => navigate("/Quiz"),
     className: "rounded-lg active:bg-neutral-900 transition-colors",
   },
 ];

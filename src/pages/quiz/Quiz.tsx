@@ -1,58 +1,66 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const quizData = [
-  { id: 1, word1: "White", word2: "Putih" },
-  { id: 2, word1: "Black", word2: "Hitam" },
-  { id: 3, word1: "Red", word2: "Merah" },
-  { id: 4, word1: "Blue", word2: "Biru" },
+  { id: 1, words: ["a", "A", "1", "!"] },
+  { id: 2, words: ["b", "B", "2", "@"] },
+  { id: 3, words: ["c", "C", "3", "#"] },
+  { id: 4, words: ["d", "D", "4", "$"] },
 ];
 
+interface QuizItem {
+  id: number;
+  words: string[];
+}
+
+// Fungsi untuk mengacak array tanpa mengubah aslinya
+function shuffleArray<T>(array: T[]): T[] {
+  return [...array].sort(() => Math.random() - 0.5);
+}
+
+// Mengacak kata dalam setiap grup
+function shuffleQuizData(data: QuizItem[]): string[] {
+  return shuffleArray(data.flatMap((item) => shuffleArray(item.words)));
+}
+
 export default function Quiz() {
-  const [selectedWord, setSelectedWord] = useState<string | null>(null);
+  const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
-  const [feedback, setFeedback] = useState<{ [key: string]: string }>({});
+  const [shuffledWords] = useState<string[]>(shuffleQuizData(quizData));
 
   const handleSelect = (word: string) => {
-    if (!selectedWord) {
-      setSelectedWord(word);
-    } else {
+    setSelectedWords((prev) => (prev.includes(word) ? prev : [...prev, word]));
+  };
+
+  useEffect(() => {
+    if (selectedWords.length >= quizData[0].words.length) {
       const isCorrect = quizData.some(
-        (pair) =>
-          (pair.word1 === selectedWord && pair.word2 === word) ||
-          (pair.word2 === selectedWord && pair.word1 === word)
+        ({ words }) =>
+          words.every((w) => selectedWords.includes(w)) &&
+          words.length === selectedWords.length
       );
 
-      const pairKey = `${selectedWord}-${word}`;
-      setFeedback((prev) => ({ ...prev, [pairKey]: isCorrect ? "correct" : "wrong" }));
-
       if (isCorrect) {
-        setMatchedPairs((prev) => [...prev, selectedWord, word]);
-      } else {
-        setTimeout(() => {
-          setFeedback((prev) => {
-            const newFeedback = { ...prev };
-            delete newFeedback[pairKey];
-            return newFeedback;
-          });
-        }, 4000);
+        setMatchedPairs((prev) => [...prev, ...selectedWords]);
       }
-      setSelectedWord(null);
+
+      console.log(
+        `${isCorrect ? "Benar!" : "Salah!"} ${selectedWords.join(", ")}`
+      );
+      setSelectedWords([]);
     }
-  };
+  }, [selectedWords]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-2xl font-bold mb-6">Cocokkan Kata!</h1>
-      <div className="grid grid-cols-2 gap-4">
-        {[...quizData.map((q) => q.word1), ...quizData.map((q) => q.word2)].map((word) => (
+      <h1 className="text-2xl font-bold mb-6">{selectedWords.join(", ")}</h1>
+      <div className="grid grid-flow-col grid-rows-4 gap-4">
+        {shuffledWords.map((word) => (
           <button
             key={word}
             className={`px-4 py-2 border rounded ${
               matchedPairs.includes(word)
                 ? "bg-green-500 text-white"
-                : feedback[`${selectedWord}-${word}`] === "wrong" || feedback[`${word}-${selectedWord}`] === "wrong"
-                ? "bg-red-500 text-white"
-                : selectedWord === word
+                : selectedWords.includes(word)
                 ? "bg-blue-500 text-white"
                 : "bg-white"
             }`}
@@ -67,8 +75,7 @@ export default function Quiz() {
         className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
         onClick={() => {
           setMatchedPairs([]);
-          setFeedback({});
-          setSelectedWord(null);
+          setSelectedWords([]);
         }}
       >
         Reset

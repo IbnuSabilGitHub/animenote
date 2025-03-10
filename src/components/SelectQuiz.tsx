@@ -79,7 +79,7 @@ const SelectQuiz: React.FC<Props> = ({ quizData }) => {
 
     return (
         <div className="flex gap-4">
-            {shuffledQuizData.map((_: any, colIndex: number) => (
+            {shuffledQuizData[0].words.map((_: any, colIndex: number) => (
                 <div key={colIndex} className="flex flex-col gap-4">
                     {shuffledQuizData.map((group: any) => (
                         <button

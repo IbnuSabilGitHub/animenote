@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+type WordItem = { word: string; uniqueId: string };
 
 type DataItem = {
     id: number;
-    words: string[];
+    words: WordItem[];
 };
 
 type Props = {
@@ -10,10 +11,10 @@ type Props = {
 };
 
 function shuffleWordsInGroups(data: DataItem[]) {
-    // Deep copy untuk menghindari perubahan pada array asli
+    // Deep copy agar tidak mengubah data asli
     const shuffledData = JSON.parse(JSON.stringify(data));
 
-    // Dapatkan jumlah kolom berdasarkan jumlah elemen dalam words[0]
+    // Dapatkan jumlah kolom berdasarkan panjang words[0]
     const columnCount = shuffledData[0].words.length;
 
     // Loop setiap kolom untuk mengacaknya secara independen
@@ -34,35 +35,42 @@ function shuffleWordsInGroups(data: DataItem[]) {
 }
 
 const SelectQuiz: React.FC<Props> = ({ quizData }) => {
-    const [selectedWords, setSelectedWords] = useState<{ [key: number]: string }>(
-        {}
-    );
+    const [selectedWords, setSelectedWords] = useState<
+        { word: string; uniqueId: string }[]
+    >([]);
 
     const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
     const [shuffledQuizData] = useState(() => shuffleWordsInGroups(quizData));
     const [wrong, setWrong] = useState<string[]>([]);
-    const handleSelect = (word: string, index: number) => {
+    const handleSelect = (
+        wordObj: { word: string; uniqueId: string },
+        index: number
+    ) => {
         setSelectedWords((prev) => {
-            const updatedWords = { ...prev };
-            if (prev[index] === word) {
-                delete updatedWords[index];
-            } else {
-                updatedWords[index] = word;
-            }
-            return updatedWords;
+            const newSelectedWords = [...prev];
+            newSelectedWords[index] = wordObj;
+            return newSelectedWords;
         });
     };
 
     useEffect(() => {
         if (Object.keys(selectedWords).length === quizData[0].words.length) {
-            const isCorrect = quizData.some(({ words }) =>
-                words.every((word) => Object.values(selectedWords).includes(word))
-            );
+            const isCorrect = quizData.some((group) => {
+                return group.words.every((wordObj, index) => {
+                    return wordObj.word === selectedWords[index].word;
+                });
+            });
 
             if (isCorrect) {
-                setMatchedPairs((prev) => [...prev, ...Object.values(selectedWords)]);
+                setMatchedPairs((prev) => [
+                    ...prev,
+                    ...Object.values(selectedWords).map((item) => item.uniqueId),
+                ]);
             } else {
-                setWrong((prev) => [...prev, ...Object.values(selectedWords)]);
+                setWrong((prev) => [
+                    ...prev,
+                    ...Object.values(selectedWords).map((item) => item.uniqueId),
+                ]);
                 setTimeout(() => {
                     setWrong([]);
                 }, 1000);
@@ -73,7 +81,7 @@ const SelectQuiz: React.FC<Props> = ({ quizData }) => {
                 Object.values(selectedWords).join(", ")
             );
 
-            setSelectedWords({});
+            setSelectedWords([]);
         }
     }, [selectedWords, quizData]);
 
@@ -83,19 +91,19 @@ const SelectQuiz: React.FC<Props> = ({ quizData }) => {
                 <div key={colIndex} className="flex flex-col gap-4">
                     {shuffledQuizData.map((group: any) => (
                         <button
-                            key={group.words[colIndex]}
-                            className={`px-4 py-2 border rounded ${matchedPairs.includes(group.words[colIndex])
+                            key={group.words[colIndex].word}
+                            className={`px-4 py-2 border rounded ${matchedPairs.includes(group.words[colIndex].uniqueId)
                                     ? "bg-green-500 text-white"
-                                    : wrong.includes(group.words[colIndex])
+                                    : wrong.includes(group.words[colIndex].uniqueId)
                                         ? "bg-red-500 text-white"
                                         : selectedWords[colIndex] === group.words[colIndex]
                                             ? "bg-blue-500 text-white"
                                             : "bg-white"
                                 }`}
                             onClick={() => handleSelect(group.words[colIndex], colIndex)}
-                            disabled={matchedPairs.includes(group.words[colIndex])}
+                            disabled={matchedPairs.includes(group.words[colIndex].uniqueId)}
                         >
-                            {group.words[colIndex]}
+                            {group.words[colIndex].word}
                         </button>
                     ))}
                 </div>

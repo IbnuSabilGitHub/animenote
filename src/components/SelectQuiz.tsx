@@ -91,7 +91,7 @@ const SelectQuiz: React.FC<Props> = ({ quizData }) => {
                 <div key={colIndex} className="flex flex-col gap-4">
                     {shuffledQuizData.map((group: any) => (
                         <button
-                            key={group.words[colIndex].word}
+                            key={group.words[colIndex].uniqueId}
                             className={`px-4 py-2 border rounded ${matchedPairs.includes(group.words[colIndex].uniqueId)
                                     ? "bg-green-500 text-white"
                                     : wrong.includes(group.words[colIndex].uniqueId)

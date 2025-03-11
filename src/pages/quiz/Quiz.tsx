@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import SelectQuiz from "../../components/SelectQuiz";
 
-type QuizData = { id: number; words: string[] };
+type WordItem = { word: string; uniqueId: string };
+type DataItem = {
+    id: number;
+    words: WordItem[];
+};
+
 
 export default function Quiz() {
-    const [data, setData] = useState<QuizData[]>([]);
+    const [data, setData] = useState<DataItem[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -15,7 +20,7 @@ export default function Quiz() {
                 }
                 return response.json();
             })
-            .then((jsonData: QuizData[]) => {
+            .then((jsonData: DataItem[]) => {
                 setData(jsonData);
                 setLoading(false);
             })

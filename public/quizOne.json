@@ -2,41 +2,37 @@
     {
         "id": 1,
         "words": [
-            "بِ",
-            "dengan",
-            "حرف"
+          { "word": "a", "uniqueId": "1-1" },
+          { "word": "A", "uniqueId": "1-2" },
+          { "word": "1", "uniqueId": "1-3" },
+          { "word": "!", "uniqueId": "1-4" }
         ]
-    },
-    {
+      },
+      {
         "id": 2,
         "words": [
-            "اسۡمِ",
-            "asma/nama",
-            "اسم"
+          { "word": "b", "uniqueId": "2-1" },
+          { "word": "B", "uniqueId": "2-2" },
+          { "word": "2", "uniqueId": "2-3" },
+          { "word": "!", "uniqueId": "2-4" }
         ]
-    },
-    {
+      },
+      {
         "id": 3,
         "words": [
-            "ٱللَّهُ",
-            "Allah",
-            "اسم"
+          { "word": "c", "uniqueId": "3-1" },
+          { "word": "C", "uniqueId": "3-2" },
+          { "word": "3", "uniqueId": "3-3" },
+          { "word": "!", "uniqueId": "3-4" }
         ]
-    },
-    {
+      },
+      {
         "id": 4,
         "words": [
-            "ٱلرَّحۡمَـٰنِ",
-            "maha pengasih",
-            "اسم"
+          { "word": "d", "uniqueId": "4-1" },
+          { "word": "D", "uniqueId": "4-2" },
+          { "word": "4", "uniqueId": "4-3" },
+          { "word": "$", "uniqueId": "4-4" }
         ]
-    },
-    {
-        "id": 4,
-        "words": [
-            "ٱلرَّحِیمِ",
-            "maha penyayang",
-            "اسم"
-        ]
-    }
+      }
 ]

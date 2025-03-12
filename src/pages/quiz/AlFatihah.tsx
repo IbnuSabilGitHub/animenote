@@ -12,7 +12,7 @@ export default function AlFatihah() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("/quizOne.json") // Ambil dari public/
+        fetch("/al-fatihah.json") // Ambil dari public/
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Gagal mengambil data kuis");

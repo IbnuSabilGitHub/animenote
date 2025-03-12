@@ -23,6 +23,7 @@ import React, {
     backButtonText?: string;
     nextButtonText?: string;
     disableStepIndicators?: boolean;
+    disableBackButton?: boolean;
     renderStepIndicator?: (props: {
       step: number;
       currentStep: number;
@@ -44,6 +45,7 @@ import React, {
     backButtonText = "Back",
     nextButtonText = "Continue",
     disableStepIndicators = false,
+    disableBackButton = false,
     renderStepIndicator,
     ...rest
   }: StepperProps) {
@@ -143,7 +145,7 @@ import React, {
                   currentStep !== 1 ? "justify-between" : "justify-end"
                 }`}
               >
-                {currentStep !== 1 && (
+                {currentStep !== 1 && !disableBackButton && (
                   <button
                     onClick={handleBack}
                     className={`duration-350 rounded px-2 py-1 transition ${

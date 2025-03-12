@@ -81,7 +81,7 @@ export default function AlFatihah() {
                     console.log(step);
                 }}
                 onFinalStepCompleted={() => console.log("All steps completed!")}
-                backButtonText="Previous"
+                disableBackButton={true}
                 nextButtonText="Next"
                 stepCircleContainerClassName="rounded-4xl"
             >

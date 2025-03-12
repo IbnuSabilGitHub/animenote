@@ -4,6 +4,7 @@ import Home from './pages/home/Home';
 import About from './pages/about/About';
 import UserProfile from './pages/userprofile/UserProfile';
 import Quiz from './pages/quiz/Quiz';
+import AlFatihah from './pages/quiz/AlFatihah';
 
 export default function App() {
   return (
@@ -13,7 +14,8 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="user/:id" element={<UserProfile />} />
-          <Route path="Quiz" element={<Quiz />} />
+          <Route path="Quiz" element={<Quiz />}/>
+          <Route path="Quiz/AlFatihah" element={<AlFatihah />} />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Route>
       </Routes>

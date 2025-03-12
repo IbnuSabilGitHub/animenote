@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../styles/font.css";
 type WordItem = { word: string; uniqueId: string };
 
 type DataItem = {
@@ -92,13 +93,13 @@ const SelectQuiz: React.FC<Props> = ({ quizData }) => {
                     {shuffledQuizData.map((group: any) => (
                         <button
                             key={group.words[colIndex].uniqueId}
-                            className={`px-4 py-2 border border-neutral-800 rounded ${matchedPairs.includes(group.words[colIndex].uniqueId)
+                            className={`px-8 py-4 border text-2xl border-neutral-800 rounded noto-naskh-arabic-medium ${matchedPairs.includes(group.words[colIndex].uniqueId)
                                     ? "bg-green-500 text-white"
                                     : wrong.includes(group.words[colIndex].uniqueId)
                                         ? "bg-red-500 text-white"
                                         : selectedWords[colIndex] === group.words[colIndex]
                                             ? "bg-blue-500 text-white"
-                                            : "bg-neutral-900 text-white"
+                                            : "bg-neutral-900 text-white hover:bg-neutral-800"
                                 }`}
                             onClick={() => handleSelect(group.words[colIndex], colIndex)}
                             disabled={matchedPairs.includes(group.words[colIndex].uniqueId)}

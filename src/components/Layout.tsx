@@ -29,8 +29,8 @@ const items = (navigate: (path: string) => void): DockItem[] => [
     className: "rounded-lg active:bg-neutral-900 transition-colors",
   },
   {
-    icon: <i className="fa-solid fa-gear text-xs md:text-sm text-amber-50"></i>,
-    label: "Settings",
+    icon: <i className="fa-solid fa-book-open-reader text-xs md:text-sm text-amber-50"></i>,
+    label: "Quiz",
     onClick: () => navigate("/Quiz"),
     className: "rounded-lg active:bg-neutral-900 transition-colors",
   },

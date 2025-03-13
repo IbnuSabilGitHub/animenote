@@ -2,11 +2,22 @@ import { useEffect, useState } from "react";
 import SelectQuiz from "../../components/SelectQuiz";
 import "../../styles/font.css"
 
-type WordItem = { word: string; uniqueId: string };
-type DataItem = {
+type Word = {
+    word: string;
+    uniqueId: string;
+  };
+  
+  type StepItem = {
     id: number;
-    words: WordItem[];
-};
+    words: Word[];
+  };
+  
+  type Step = {
+    stepIndex: number;  // Index step ini (misalnya: 0 untuk step 1)
+    items: StepItem[];  // Data pada step ini
+  };
+  
+  type MultiStepData = Step[];  // Semua langkah dalam bentuk array
 
 // export default function AlFatihah() {
 //     const [data, setData] = useState<DataItem[]>([]);
@@ -41,7 +52,7 @@ type DataItem = {
 // }
 import Stepper, { Step } from "../../components/Stepper"
 export default function AlFatihah() {
-    const [data, setData] = useState<DataItem[]>([]);
+    const [data, setData] = useState<MultiStepData>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -52,7 +63,7 @@ export default function AlFatihah() {
                 }
                 return response.json();
             })
-            .then((jsonData: DataItem[]) => {
+            .then((jsonData: MultiStepData) => {
                 setData(jsonData);
                 setLoading(false);
             })
@@ -85,26 +96,11 @@ export default function AlFatihah() {
                 nextButtonText="Next"
                 stepCircleContainerClassName="rounded-4xl"
             >
-                <Step>
-                    <div className="mb-8">
-                        <h2 className="text-4xl mb-3">بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ </h2>
-                        <p className="font-normal text-gray-700 dark:text-gray-400 mb-12">Dengan Nama Allah yang Maha Pengasih, Maha Penyayang</p>
-                    </div>
-                    <SelectQuiz quizData={data} />
-                </Step>
-                <Step>
-                    <h2>Step 2</h2>
-                    <img style={{ height: '100px', width: '100%', objectFit: 'cover', objectPosition: 'center -70px', borderRadius: '15px', marginTop: '1em' }} src="https://www.purrfectcatgifts.co.uk/cdn/shop/collections/Funny_Cat_Cards_640x640.png?v=1663150894" />
-                    <p>Custom step content!</p>
-                </Step>
-                <Step>
-                    <h2>How about an input?</h2>
-                    <input value={"test"} onChange={() => alert("test")} placeholder="Your name?" />
-                </Step>
-                <Step>
-                    <h2>Final Step</h2>
-                    <p>You made it!</p>
-                </Step>
+                {data.map((step, index) => (
+                    <Step key={index}>
+                        <SelectQuiz quizData={step.items} />
+                    </Step>
+                ))}
             </Stepper>
         </div>
     )

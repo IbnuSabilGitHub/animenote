@@ -1,6 +1,6 @@
 [
   {
-    "step": 0,
+    "step": 1,
     "items": [
       {
         "id": 1,
@@ -45,22 +45,22 @@
     ]
   },
   {
-    "step": 0,
+    "step": 2,
     "items": [
       {
         "id": 1,
         "words": [
-          { "word": "بِ", "uniqueId": "1-1" },
-          { "word": "dengan", "uniqueId": "1-2" },
-          { "word": "حرف", "uniqueId": "1-3" }
+          { "word": "ٱلۡحَمۡدُ", "uniqueId": "1-1" },
+          { "word": "pujian", "uniqueId": "1-2" },
+          { "word": "اسم", "uniqueId": "1-3" }
         ]
       },
       {
         "id": 2,
         "words": [
-          { "word": "اسۡمِ", "uniqueId": "2-1" },
-          { "word": "asma/nama", "uniqueId": "2-2" },
-          { "word": "اسم", "uniqueId": "2-3" }
+          { "word": "لِ", "uniqueId": "2-1" },
+          { "word": "bagi, milik", "uniqueId": "2-2" },
+          { "word": "حرف", "uniqueId": "2-3" }
         ]
       },
       {
@@ -74,17 +74,263 @@
       {
         "id": 4,
         "words": [
-          { "word": "ٱلرَّحۡمَـٰنِ", "uniqueId": "4-1" },
-          { "word": "maha pengasih", "uniqueId": "4-2" },
+          { "word": "رَبِّ", "uniqueId": "4-1" },
+          { "word": "Tuhan", "uniqueId": "4-2" },
           { "word": "اسم", "uniqueId": "4-3" }
         ]
       },
       {
         "id": 5,
         "words": [
-          { "word": "ٱلرَّحِیمِ", "uniqueId": "5-1" },
-          { "word": "maha penyayang", "uniqueId": "5-2" },
+          { "word": "ٱلۡعَـٰلَمِینَ", "uniqueId": "5-1" },
+          { "word": "sekalian alam", "uniqueId": "5-2" },
+          { "word": "اسم","uniqueId": "5-3" }
+        ]
+      } 
+    ]
+  },
+  {
+    "step": 3,
+    "items": [
+      {
+        "id": 1,
+        "words": [
+          { "word": "ٱلرَّحۡمَـٰنِ", "uniqueId": "1-1" },
+          { "word": "maha pengasih", "uniqueId": "1-2" },
+          { "word": "اسم", "uniqueId": "1-3" }
+        ]
+      },
+      {
+        "id": 2,
+        "words": [
+          { "word": "ٱلرَّحِیمِ", "uniqueId": "2-1" },
+          { "word": "maha penyayang", "uniqueId": "2-2" },
+          { "word": "اسم", "uniqueId": "2-3" }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 4,
+    "items": [
+      {
+        "id": 1,
+        "words": [
+          { "word": "مَـٰلِكِ", "uniqueId": "1-1" },
+          { "word": "yang merajai", "uniqueId": "1-2" },
+          { "word": "اسم", "uniqueId": "1-3" }
+        ]
+      },
+      {
+        "id": 2,
+        "words": [
+          { "word": "َوۡم", "uniqueId": "2-1" },
+          { "word": "hari", "uniqueId": "2-2" },
+          { "word": "اسم", "uniqueId": "2-3" }
+        ]
+      },
+      {
+        "id": 3,
+        "words": [
+          { "word": "ٱلدِّینِ", "uniqueId": "3-1" },
+          { "word": "pembalasan", "uniqueId": "3-2" },
+          { "word": "اسم", "uniqueId": "3-3" }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 5,
+    "items": [
+      {
+        "id": 1,
+        "words": [
+          { "word": "إِیَّا", "uniqueId": "1-1" },
+          { "word": "hanya kepada", "uniqueId": "1-2" },
+          { "word": "اسم", "uniqueId": "1-3" }
+        ]
+      },
+      {
+        "id": 2,
+        "words": [
+          { "word": "كَ", "uniqueId": "2-1" },
+          { "word": "Engkau", "uniqueId": "2-2" },
+          { "word": "اسم", "uniqueId": "2-3" }
+        ]
+      },
+      {
+        "id": 3,
+        "words": [
+          { "word": "نَعۡبُدُ", "uniqueId": "3-1" },
+          { "word": "mengabdi", "uniqueId": "3-2" },
+          { "word": "فعل", "uniqueId": "3-3" }
+        ]
+      },
+      {
+        "id": 4,
+        "words": [
+          { "word": "و", "uniqueId": "4-1" },
+          { "word": "dan", "uniqueId": "4-2" },
+          { "word": "حرف", "uniqueId": "4-3" }
+        ]
+      },
+      {
+        "id": 5,
+        "words": [
+          { "word": "إِیَّا", "uniqueId": "5-1" },
+          { "word": "hanya kepada", "uniqueId": "5-2" },
+          { "word": "اسم","uniqueId": "5-3" }
+        ]
+      },
+      {
+        "id": 6,
+        "words": [
+          { "word": "كَ", "uniqueId": "6-1" },
+          { "word": "engkau", "uniqueId": "6-2" },
+          { "word": "اسم","uniqueId": "6-3" }
+        ]
+      },
+      {
+        "id": 7,
+        "words": [
+          { "word": "نَسۡتَعِینُ", "uniqueId": "7-1" },
+          { "word": "memohon pertolongan", "uniqueId": "7-2" },
+          { "word": "فعل","uniqueId": "7-3" }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 6,
+    "items": [
+      {
+        "id": 1,
+        "words": [
+          { "word": "ٱهۡدِ", "uniqueId": "1-1" },
+          { "word": "tunjukilah", "uniqueId": "1-2" },
+          { "word": "فعل", "uniqueId": "1-3" }
+        ]
+      },
+      {
+        "id": 2,
+        "words": [
+          { "word": "َنا", "uniqueId": "2-1" },
+          { "word": "kami", "uniqueId": "2-2" },
+          { "word": "اسم", "uniqueId": "2-3" }
+        ]
+      },
+      {
+        "id": 3,
+        "words": [
+          { "word": "ٱلصِّرَ اطَ", "uniqueId": "3-1" },
+          { "word": "jalan", "uniqueId": "3-2" },
+          { "word": "اسم", "uniqueId": "3-3" }
+        ]
+      },
+      {
+        "id": 4,
+        "words": [
+          { "word": "ٱلۡمُسۡتَقِیمَ", "uniqueId": "4-1" },
+          { "word": "yang lururs", "uniqueId": "4-2" },
+          { "word": "اسم", "uniqueId": "4-3" }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 7,
+    "items": [
+      {
+        "id": 1,
+        "words": [
+          { "word": "صِرَا طَ", "uniqueId": "1-1" },
+          { "word": "jalan", "uniqueId": "1-2" },
+          { "word": "اسم", "uniqueId": "1-3" }
+        ]
+      },
+      {
+        "id": 2,
+        "words": [
+          { "word": "َٱلَّذِینَ", "uniqueId": "2-1" },
+          { "word": "yang", "uniqueId": "2-2" },
+          { "word": "اسم", "uniqueId": "2-3" }
+        ]
+      },
+      {
+        "id": 3,
+        "words": [
+          { "word": "أَنۡعَمۡتَ", "uniqueId": "3-1" },
+          { "word": "memberi nikmat", "uniqueId": "3-2" },
+          { "word": "فعل", "uniqueId": "3-3" }
+        ]
+      },
+      {
+        "id": 4,
+        "words": [
+          { "word": "عَلَیۡ", "uniqueId": "4-1" },
+          { "word": "atas", "uniqueId": "4-2" },
+          { "word": "حرف", "uniqueId": "4-3" }
+        ]
+      },
+      {
+        "id": 5,
+        "words": [
+          { "word": "هِم", "uniqueId": "5-1" },
+          { "word": "mereka", "uniqueId": "5-2" },
           { "word": "اسم", "uniqueId": "5-3" }
+        ]
+      },
+      {
+        "id": 6,
+        "words": [
+          { "word": "َغَیۡرِ", "uniqueId": "6-1" },
+          { "word": "bukan", "uniqueId": "6-2" },
+          { "word": "اسم", "uniqueId": "6-3" }
+        ]
+      },
+      {
+        "id": 7,
+        "words": [
+          { "word": "َٱلۡمَغۡضُوبِ", "uniqueId": "7-1" },
+          { "word": "orang yang dimurakai", "uniqueId": "7-2" },
+          { "word": "اسم", "uniqueId": "7-3" }
+        ]
+      },
+      {
+        "id": 8,
+        "words": [
+          { "word": "عَلَیۡ", "uniqueId": "8-1" },
+          { "word": "atas", "uniqueId": "8-2" },
+          { "word": "حرف", "uniqueId": "8-3" }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 8,
+    "items": [
+      {
+        "id": 1,
+        "words": [
+          { "word": "و", "uniqueId": "1-1" },
+          { "word": "dan", "uniqueId": "1-2" },
+          { "word": "حرف", "uniqueId": "1-3" }
+        ]
+      },
+      {
+        "id": 2,
+        "words": [
+          { "word": "لَا", "uniqueId": "2-1" },
+          { "word": "tidak, jangan", "uniqueId": "2-2" },
+          { "word": "حرف", "uniqueId": "2-3" }
+        ]
+      },
+      {
+        "id": 3,
+        "words": [
+          { "word": "ٱلضَّاۤلِّین", "uniqueId": "3-1" },
+          { "word": "orang sesat", "uniqueId": "3-2" },
+          { "word": "اسم", "uniqueId": "3-3" }
         ]
       }
     ]

@@ -53,6 +53,7 @@ type Word = {
 import Stepper, { Step } from "../../components/Stepper"
 export default function AlFatihah() {
     const [data, setData] = useState<MultiStepData>([]);
+    const [allCorrect, setAllCorrect] = useState<boolean>(false);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -98,10 +99,16 @@ export default function AlFatihah() {
             >
                 {data.map((step, index) => (
                     <Step key={index}>
-                        <SelectQuiz quizData={step.items} />
+                        <SelectQuiz quizData={step.items} allCorrect={setAllCorrect} />
                     </Step>
                 ))}
             </Stepper>
+            {allCorrect && <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-60 flex items-center justify-center">
+                <div className="bg-white p-8 rounded-xl text-black">
+                    <h1 className="text-3xl font-bold">All Correct!</h1>
+                    <p className="text-lg">You have completed the quiz</p>
+                </div>
+            </div>}
         </div>
     )
 }

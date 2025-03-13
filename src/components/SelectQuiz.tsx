@@ -9,6 +9,7 @@ type DataItem = {
 
 type Props = {
     quizData: DataItem[];
+    allCorrect: (value: boolean) => void;
 };
 
 function shuffleWordsInGroups(data: DataItem[]) {
@@ -35,7 +36,7 @@ function shuffleWordsInGroups(data: DataItem[]) {
     return shuffledData;
 }
 
-const SelectQuiz: React.FC<Props> = ({ quizData }) => {
+const SelectQuiz: React.FC<Props> = ({ quizData, allCorrect }) => {
     const [selectedWords, setSelectedWords] = useState<
         { word: string; uniqueId: string }[]
     >([]);
@@ -77,40 +78,46 @@ const SelectQuiz: React.FC<Props> = ({ quizData }) => {
                 }, 1000);
             }
 
-            console.log(
-                `${isCorrect ? "Benar!" : "Salah!"}`,
-                Object.values(selectedWords).join(", ")
-            );
+            
+            // const allCorrect = matchedPairs.length == quizData.flatMap(group => group.words.map(word => word.uniqueId)).length;
+
 
             setSelectedWords([]);
         }
     }, [selectedWords, quizData]);
 
+    useEffect(() => {
+        const isAllCorrect = matchedPairs.length == quizData.flatMap(group => group.words.map(word => word.uniqueId)).length;
+        if (isAllCorrect) {
+            allCorrect(true);
+        }
+    }, [matchedPairs,quizData,allCorrect]);
+
     return (
-<div className="flex gap-4">
-    {shuffledQuizData[0].words.map((_: any, colIndex: number) => (
-        <div key={colIndex} className="flex flex-col gap-4 w-full">
-            {shuffledQuizData.map((group: any) => (
-                <button
-                    key={group.words[colIndex].uniqueId}
-                    className={`w-full px-3 md:px-6 py-4 border text-xs sm:text-md md:text-2xl rounded-xl
+        <div className="flex gap-4">
+            {shuffledQuizData[0].words.map((_: any, colIndex: number) => (
+                <div key={colIndex} className="flex flex-col gap-4 w-full">
+                    {shuffledQuizData.map((group: any) => (
+                        <button
+                            key={group.words[colIndex].uniqueId}
+                            className={`w-full px-3 md:px-6 py-4 border text-xs sm:text-md md:text-xl lg:text-2xl rounded-xl
                         ${matchedPairs.includes(group.words[colIndex].uniqueId)
-                            ? "bg-green-900 text-green-300 hover:bg-green-800"
-                            : wrong.includes(group.words[colIndex].uniqueId)
-                                ? "bg-red-900 text-red-300"
-                                : selectedWords[colIndex] === group.words[colIndex]
-                                    ? "bg-sky-900 text-sky-300 border-sky-600"
-                                    : "bg-neutral-900 text-white border-neutral-800 hover:bg-neutral-800"
-                        }`}
-                    onClick={() => handleSelect(group.words[colIndex], colIndex)}
-                    disabled={matchedPairs.includes(group.words[colIndex].uniqueId)}
-                >
-                    {group.words[colIndex].word}
-                </button>
+                                    ? "bg-green-900 text-green-300 hover:bg-green-800"
+                                    : wrong.includes(group.words[colIndex].uniqueId)
+                                        ? "bg-red-900 text-red-300"
+                                        : selectedWords[colIndex] === group.words[colIndex]
+                                            ? "bg-sky-900 text-sky-300 border-sky-600"
+                                            : "bg-neutral-900 text-white border-neutral-800 hover:bg-neutral-800"
+                                }`}
+                            onClick={() => handleSelect(group.words[colIndex], colIndex)}
+                            disabled={matchedPairs.includes(group.words[colIndex].uniqueId)}
+                        >
+                            {group.words[colIndex].word}
+                        </button>
+                    ))}
+                </div>
             ))}
         </div>
-    ))}
-</div>
 
     );
 };

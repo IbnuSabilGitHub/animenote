@@ -59,24 +59,29 @@ const SelectQuiz: React.FC<Props> = ({ quizData, allCorrect }) => {
         if (Object.keys(selectedWords).length === quizData[0].words.length) {
             const isCorrect = quizData.some((group) => {
                 return group.words.every((wordObj, index) => {
-                    return wordObj.word === selectedWords[index].word;
+                    return selectedWords[index]?.word === wordObj.word; // Gunakan optional chaining (?.)
                 });
-            });
+            });            
 
             if (isCorrect) {
                 setMatchedPairs((prev) => [
                     ...prev,
-                    ...Object.values(selectedWords).map((item) => item.uniqueId),
+                    ...Object.values(selectedWords)
+                        .filter((item) => item !== undefined)  // ✅ Hindari `undefined`
+                        .map((item) => item.uniqueId),
                 ]);
             } else {
                 setWrong((prev) => [
                     ...prev,
-                    ...Object.values(selectedWords).map((item) => item.uniqueId),
+                    ...Object.values(selectedWords)
+                        .filter((item) => item !== undefined)  // ✅ Hindari `undefined`
+                        .map((item) => item.uniqueId),
                 ]);
                 setTimeout(() => {
                     setWrong([]);
                 }, 1000);
             }
+            
 
             
             // const allCorrect = matchedPairs.length == quizData.flatMap(group => group.words.map(word => word.uniqueId)).length;

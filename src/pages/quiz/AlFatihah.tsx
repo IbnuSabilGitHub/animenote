@@ -54,7 +54,15 @@ import Stepper, { Step } from "../../components/Stepper"
 export default function AlFatihah() {
     const [data, setData] = useState<MultiStepData>([]);
     const [allCorrect, setAllCorrect] = useState<boolean>(false);
+    // const [currentStep, setCurrentStep] = useState(1);
     const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (allCorrect){
+            setAllCorrect(false);
+        }
+    }, [allCorrect]); 
+
 
     useEffect(() => {
         fetch("/al-fatihah.json") // Ambil dari public/
@@ -90,12 +98,12 @@ export default function AlFatihah() {
             <Stepper
                 initialStep={1}
                 onStepChange={(step) => {
-                    console.log(step);
+                    // setCurrentStep(step)
+                    console.log("Current step is", step);
                 }}
                 onFinalStepCompleted={() => console.log("All steps completed!")}
-                disableBackButton={true}
-                nextButtonText="Next"
                 stepCircleContainerClassName="rounded-4xl"
+                triggersNext={allCorrect}
             >
                 {data.map((step, index) => (
                     <Step key={index}>
@@ -103,12 +111,7 @@ export default function AlFatihah() {
                     </Step>
                 ))}
             </Stepper>
-            {allCorrect && <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-60 flex items-center justify-center">
-                <div className="bg-white p-8 rounded-xl text-black">
-                    <h1 className="text-3xl font-bold">All Correct!</h1>
-                    <p className="text-lg">You have completed the quiz</p>
-                </div>
-            </div>}
+
         </div>
     )
 }

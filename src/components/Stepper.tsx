@@ -56,7 +56,7 @@ export default function Stepper({
       onStepChange(totalSteps + 1);
       onFinalStepCompleted();
     }
-  }, [triggersNext, currentStep, totalSteps, onStepChange, onFinalStepCompleted, isLastStep]);  
+  }, [triggersNext, currentStep, totalSteps, onStepChange, onFinalStepCompleted, isLastStep]);   
 
 
 

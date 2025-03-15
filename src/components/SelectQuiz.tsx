@@ -103,7 +103,6 @@ const SelectQuiz: React.FC<Props> = ({ quizData, allCorrect }) => {
 
     return (
         <div className="flex gap-4">
-            <h1>{Object.values(selectedWords).map((item) => item?.word).join(", ")}</h1>
             {shuffledQuizData[0].words.map((_: any, colIndex: number) => (
                 <div key={colIndex} className="flex flex-col gap-4 w-full">
                     {shuffledQuizData.map((group: any) => (

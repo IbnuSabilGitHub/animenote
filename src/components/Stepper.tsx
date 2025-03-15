@@ -18,7 +18,6 @@ interface StepperProps extends HTMLAttributes<HTMLDivElement> {
   stepCircleContainerClassName?: string;
   stepContainerClassName?: string;
   contentClassName?: string;
-  footerClassName?: string;
   triggersNext?: boolean;
   renderStepIndicator?: (props: {
     step: number;
@@ -34,7 +33,6 @@ export default function Stepper({
   stepCircleContainerClassName = "",
   stepContainerClassName = "",
   contentClassName = "",
-  footerClassName = "",
   triggersNext = false,
   renderStepIndicator,
   ...rest
@@ -59,22 +57,17 @@ export default function Stepper({
   }, [triggersNext, currentStep, totalSteps, onStepChange, onFinalStepCompleted, isLastStep]);   
 
 
-
-
-
-
-
   return (
     <div
-      className="flex min-h-full flex-1 flex-col items-center justify-center p-2 md:p-8"
+      className="flex min-h-full flex-1 flex-col items-center justify-center p-4 md:p-8"
       {...rest}
     >
       <div
-        className={`mx-auto w-full rounded-4xl shadow-xl  ${stepCircleContainerClassName}`}
+        className={`mx-auto w-full rounded-xl md:rounded-2xl shadow-xl  ${stepCircleContainerClassName}`}
         style={{ border: "1px solid #222" }}
       >
         <div
-          className={`${stepContainerClassName} flex w-full items-center p-8`}
+          className={`${stepContainerClassName} flex w-full items-center p-4 md:p-8`}
         >
           {stepsArray.map((_, index) => {
             const stepNumber = index + 1;
@@ -109,10 +102,6 @@ export default function Stepper({
           {stepsArray[currentStep - 1]}
         </StepContentWrapper>
 
-        {!isCompleted && (
-          <div className={`px-8 pb-8 ${footerClassName}`}>
-          </div>
-        )}
       </div>
     </div>
   );
@@ -212,7 +201,7 @@ interface StepProps {
 }
 
 export function Step({ children }: StepProps) {
-  return <div className="px-8">{children}</div>;
+  return <div className="px-4 pb-4 md:px-8 md:pb-8">{children}</div>;
 }
 
 interface StepIndicatorProps {

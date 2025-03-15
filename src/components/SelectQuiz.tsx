@@ -102,13 +102,13 @@ const SelectQuiz: React.FC<Props> = ({ quizData, allCorrect }) => {
     }, [matchedPairs, quizData, allCorrect]);
 
     return (
-        <div className="flex gap-4">
+        <div className="flex gap-2 md:gap-4 lg:gap-6">
             {shuffledQuizData[0].words.map((_: any, colIndex: number) => (
-                <div key={colIndex} className="flex flex-col gap-4 w-full">
+                <div key={colIndex} className="flex flex-col gap-2 md:gap-4 lg:gap-6 w-full">
                     {shuffledQuizData.map((group: any) => (
                         <button
                             key={group.words[colIndex].uniqueId}
-                            className={`w-full px-3 md:px-6 py-4 border text-xs sm:text-md md:text-xl lg:text-2xl rounded-xl
+                            className={`w-full p-2 h-full py-4 border sm:text-md md:text-xl lg:text-2xl rounded-md md:rounded-xl ${colIndex === 1 ? "text-xs ": "text-xl"}
                         ${matchedPairs.includes(group.words[colIndex].uniqueId)
                                     ? "bg-green-900 text-green-300 hover:bg-green-800"
                                     : wrong.includes(group.words[colIndex].uniqueId)
@@ -116,6 +116,7 @@ const SelectQuiz: React.FC<Props> = ({ quizData, allCorrect }) => {
                                         : selectedWords[colIndex] === group.words[colIndex]
                                             ? "bg-sky-900 text-sky-300 border-sky-600"
                                             : "bg-neutral-900 text-white border-neutral-800 hover:bg-neutral-800"
+                                            
                                 }`}
                             onClick={() => {
                                 handleSelect(group.words[colIndex], colIndex);

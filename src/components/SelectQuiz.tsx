@@ -40,6 +40,7 @@ const SelectQuiz: React.FC<Props> = ({ quizData, allCorrect }) => {
     const [selectedWords, setSelectedWords] = useState<
         { word: string; uniqueId: string }[]
     >([]);
+    const [validSelection, setValidSelection] = useState<number>(0);
 
     const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
     const [shuffledQuizData] = useState(() => shuffleWordsInGroups(quizData));
@@ -51,55 +52,58 @@ const SelectQuiz: React.FC<Props> = ({ quizData, allCorrect }) => {
         setSelectedWords((prev) => {
             const newSelectedWords = [...prev];
             newSelectedWords[index] = wordObj;
+            setValidSelection(newSelectedWords.filter((item) => item !== undefined).length);
             return newSelectedWords;
         });
     };
 
     useEffect(() => {
-        if (Object.keys(selectedWords).length === quizData[0].words.length) {
+        if (validSelection === quizData[0].words.length) {
             const isCorrect = quizData.some((group) => {
                 return group.words.every((wordObj, index) => {
-                    return selectedWords[index]?.word === wordObj.word; // Gunakan optional chaining (?.)
+                    return selectedWords[index]?.word === wordObj.word;
                 });
-            });            
+            });
+
 
             if (isCorrect) {
                 setMatchedPairs((prev) => [
                     ...prev,
                     ...Object.values(selectedWords)
-                        .filter((item) => item !== undefined)  // ✅ Hindari `undefined`
+                        .filter((item) => item !== undefined)
                         .map((item) => item.uniqueId),
                 ]);
             } else {
                 setWrong((prev) => [
                     ...prev,
                     ...Object.values(selectedWords)
-                        .filter((item) => item !== undefined)  // ✅ Hindari `undefined`
+                        .filter((item) => item !== undefined)
                         .map((item) => item.uniqueId),
                 ]);
                 setTimeout(() => {
                     setWrong([]);
                 }, 1000);
             }
-            
 
-            
+
+
             // const allCorrect = matchedPairs.length == quizData.flatMap(group => group.words.map(word => word.uniqueId)).length;
 
-
+            setValidSelection(0);
             setSelectedWords([]);
         }
-    }, [selectedWords, quizData]);
+    }, [selectedWords, quizData, validSelection, matchedPairs]);
 
     useEffect(() => {
         const isAllCorrect = matchedPairs.length == quizData.flatMap(group => group.words.map(word => word.uniqueId)).length;
         if (isAllCorrect) {
             allCorrect(true);
         }
-    }, [matchedPairs,quizData,allCorrect]);
+    }, [matchedPairs, quizData, allCorrect]);
 
     return (
         <div className="flex gap-4">
+            <h1>{Object.values(selectedWords).map((item) => item?.word).join(", ")}</h1>
             {shuffledQuizData[0].words.map((_: any, colIndex: number) => (
                 <div key={colIndex} className="flex flex-col gap-4 w-full">
                     {shuffledQuizData.map((group: any) => (
@@ -114,7 +118,9 @@ const SelectQuiz: React.FC<Props> = ({ quizData, allCorrect }) => {
                                             ? "bg-sky-900 text-sky-300 border-sky-600"
                                             : "bg-neutral-900 text-white border-neutral-800 hover:bg-neutral-800"
                                 }`}
-                            onClick={() => handleSelect(group.words[colIndex], colIndex)}
+                            onClick={() => {
+                                handleSelect(group.words[colIndex], colIndex);
+                            }}
                             disabled={matchedPairs.includes(group.words[colIndex].uniqueId)}
                         >
                             {group.words[colIndex].word}

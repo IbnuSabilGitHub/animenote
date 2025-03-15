@@ -47,16 +47,20 @@ export default function Stepper({
   const isLastStep = currentStep === totalSteps;
 
   useEffect(() => {
-    if (triggersNext && currentStep < totalSteps) {
+    if (triggersNext && currentStep+1 < totalSteps) {
       setDirection(1);
       setCurrentStep((prevStep) => prevStep + 1);
       onStepChange(currentStep + 1);
+    }else if (triggersNext && isLastStep) {
+      setCurrentStep(totalSteps + 1);
+      onStepChange(totalSteps + 1);
+      onFinalStepCompleted();
     }
-  }, [triggersNext, currentStep, totalSteps, onStepChange]);
+  }, [triggersNext, currentStep, totalSteps, onStepChange, onFinalStepCompleted, isLastStep]);  
 
-  const handleComplete = () => {
-    onFinalStepCompleted();
-  };
+
+
+
 
 
 
@@ -107,16 +111,6 @@ export default function Stepper({
 
         {!isCompleted && (
           <div className={`px-8 pb-8 ${footerClassName}`}>
-            {isLastStep && (
-              <div className="mt-10 flex justify-end">
-                <button
-                  onClick={handleComplete}
-                  className="duration-350 flex items-center justify-center rounded-full bg-green-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition hover:bg-green-600 active:bg-green-700"
-                >
-                  Complete
-                </button>
-              </div>
-            )}
           </div>
         )}
       </div>

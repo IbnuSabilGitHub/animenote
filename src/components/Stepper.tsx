@@ -242,7 +242,7 @@ function StepIndicator({
         ) : status === "active" ? (
           <div className="h-3 w-3 rounded-full bg-[#060606]" />
         ) : (
-          <span className="text-sm">{step}</span>
+          <span className="text-xs md:text-md">{step}</span>
         )}
       </motion.div>
     </motion.div>
@@ -260,7 +260,7 @@ function StepConnector({ isComplete }: StepConnectorProps) {
   };
 
   return (
-    <div className="relative mx-2 h-0.5 flex-1 overflow-hidden rounded bg-neutral-600">
+    <div className="relative mx-1 md:mx-4 h-0.5 flex-1 overflow-hidden rounded bg-neutral-600">
       <motion.div
         className="absolute left-0 top-0 h-full"
         variants={lineVariants}

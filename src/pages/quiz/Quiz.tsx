@@ -1,11 +1,9 @@
-
-
 import SpotlightCard from "../../components/SpotLightCard";
 import { Link } from "react-router-dom";
 export default function Quiz() {
   return (
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-4 py-6 px-16">
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 py-6 px-8 md:px-16">
         <Link to="AlFatihah">
           <SpotlightCard
             className="h-auto max-w-full p-6  rounded-lg shadow-sm "

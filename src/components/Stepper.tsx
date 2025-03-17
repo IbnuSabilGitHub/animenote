@@ -45,17 +45,20 @@ export default function Stepper({
   const isLastStep = currentStep === totalSteps;
 
   useEffect(() => {
-    if (triggersNext && currentStep+1 < totalSteps) {
+    if (triggersNext && currentStep < totalSteps) {
       setDirection(1);
       setCurrentStep((prevStep) => prevStep + 1);
       onStepChange(currentStep + 1);
-    }else if (triggersNext && isLastStep) {
+    }
+  }, [triggersNext, currentStep, totalSteps, onStepChange]);   
+
+  useEffect(() => {
+    if (triggersNext && isLastStep) {
       setCurrentStep(totalSteps + 1);
       onStepChange(totalSteps + 1);
       onFinalStepCompleted();
     }
-  }, [triggersNext, currentStep, totalSteps, onStepChange, onFinalStepCompleted, isLastStep]);   
-
+  }, [currentStep, totalSteps, isLastStep, onFinalStepCompleted, onStepChange, triggersNext]);
 
   return (
     <div
@@ -230,9 +233,9 @@ function StepIndicator({
     >
       <motion.div
         variants={{
-          inactive: { scale: 1, backgroundColor: "#222", color: "#a3a3a3" },
-          active: { scale: 1, backgroundColor: "#00d8ff", color: "#00d8ff" },
-          complete: { scale: 1, backgroundColor: "#00d8ff", color: "#3b82f6" },
+          inactive: { scale: 1, backgroundColor: "rgb(34 34 34)", color: "rgb(163 163 163)" },
+          active: { scale: 1, backgroundColor: "rgb(0 216 255)", color: "rgb(0 216 255)" },
+          complete: { scale: 1, backgroundColor: "rgb(0 216 255)", color: "rgb(59 130 246)" },
         }}
         transition={{ duration: 0.3 }}
         className="flex h-8 w-8 items-center justify-center rounded-full font-semibold"
@@ -255,8 +258,8 @@ interface StepConnectorProps {
 
 function StepConnector({ isComplete }: StepConnectorProps) {
   const lineVariants: Variants = {
-    incomplete: { width: 0, backgroundColor: "transparent" },
-    complete: { width: "100%", backgroundColor: "#00d8ff" },
+    incomplete: { width: 0, backgroundColor: "rgba(0, 216, 255, 0)" },
+    complete: { width: "100%", backgroundColor: "rgb(0 216 255)" },
   };
 
   return (

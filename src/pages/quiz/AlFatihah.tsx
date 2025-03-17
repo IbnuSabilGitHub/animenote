@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SelectQuiz from "../../components/SelectQuiz";
 import "../../styles/font.css"
 
@@ -57,6 +58,8 @@ export default function AlFatihah() {
     // const [currentStep, setCurrentStep] = useState(1);
     const [loading, setLoading] = useState(true);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (allCorrect){
             setAllCorrect(false);
@@ -98,10 +101,16 @@ export default function AlFatihah() {
             <Stepper
                 initialStep={1}
                 onStepChange={(step) => {
-                    // setCurrentStep(step)
+                    
                     console.log("Current step is", step);
                 }}
-                onFinalStepCompleted={() => console.log("All steps completed!")}
+                onFinalStepCompleted={() => {
+                    console.log("All steps completed!")
+                    const timer = setTimeout(() => {
+                        navigate("/Quiz");
+                        clearTimeout(timer);
+                    }, 1000);
+                }}
                 stepCircleContainerClassName="rounded-4xl"
                 triggersNext={allCorrect}
             >

@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SelectQuiz from "../../components/SelectQuiz";
+import Swal from 'sweetalert2'
+// import withReactContent from 'sweetalert2-react-content'
 import "../../styles/font.css"
 
 type Word = {
     word: string;
     uniqueId: string;
-  };
-  
-  type StepItem = {
+};
+
+type StepItem = {
     id: number;
     words: Word[];
-  };
-  
-  type Step = {
+};
+
+type Step = {
     stepIndex: number;  // Index step ini (misalnya: 0 untuk step 1)
     items: StepItem[];  // Data pada step ini
-  };
-  
-  type MultiStepData = Step[];  // Semua langkah dalam bentuk array
+};
+
+type MultiStepData = Step[];  // Semua langkah dalam bentuk array
 
 // export default function AlFatihah() {
 //     const [data, setData] = useState<DataItem[]>([]);
@@ -55,16 +57,24 @@ import Stepper, { Step } from "../../components/Stepper"
 export default function AlFatihah() {
     const [data, setData] = useState<MultiStepData>([]);
     const [allCorrect, setAllCorrect] = useState<boolean>(false);
-    // const [currentStep, setCurrentStep] = useState(1);
     const [loading, setLoading] = useState(true);
+    const showAlert = (step:number) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `our work has been saved ${step}`,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (allCorrect){
+        if (allCorrect) {
             setAllCorrect(false);
         }
-    }, [allCorrect]); 
+    }, [allCorrect]);
 
 
     useEffect(() => {
@@ -101,8 +111,7 @@ export default function AlFatihah() {
             <Stepper
                 initialStep={1}
                 onStepChange={(step) => {
-                    
-                    console.log("Current step is", step);
+                    showAlert(step);
                 }}
                 onFinalStepCompleted={() => {
                     console.log("All steps completed!")

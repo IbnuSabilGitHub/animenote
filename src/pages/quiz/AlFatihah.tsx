@@ -4,6 +4,7 @@ import SelectQuiz from "../../components/SelectQuiz";
 import Swal from 'sweetalert2'
 // import withReactContent from 'sweetalert2-react-content'
 import "../../styles/font.css"
+import "../../styles/alertStyle.css"
 
 type Word = {
     word: string;
@@ -58,15 +59,40 @@ export default function AlFatihah() {
     const [data, setData] = useState<MultiStepData>([]);
     const [allCorrect, setAllCorrect] = useState<boolean>(false);
     const [loading, setLoading] = useState(true);
-    const showAlert = (step:number) => {
+
+
+    const showAlert = (step: number) => {
         Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `our work has been saved ${step}`,
+            title: `✅ Step ${step}!`,
+            toast: true,
+            position: "bottom-end",
             showConfirmButton: false,
-            timer: 1500
+            timer: 3000,
+            padding: '.2rem',
+            width: '15rem',
+            background: 'transparent',
+            customClass: {
+                title: 'custom-title',
+                popup: 'custom-popup',
+            },
+            showClass: {
+                popup: `
+                  animate__animated
+                  animate__fadeInUp
+                  animate__faster
+                `
+            },
+            hideClass: {
+                popup: `
+                  animate__animated
+                  animate__fadeOutDown
+                  animate__faster
+                `
+            },
+
         });
-    };
+    }
+
 
     const navigate = useNavigate();
 
@@ -111,7 +137,7 @@ export default function AlFatihah() {
             <Stepper
                 initialStep={1}
                 onStepChange={(step) => {
-                    showAlert(step);
+                    showAlert(step-1);
                 }}
                 onFinalStepCompleted={() => {
                     console.log("All steps completed!")

@@ -1,0 +1,13 @@
+.custom-popup {
+  border: 1px solid #222; /* Border hijau */
+  font-size: 14px; /* Ukuran teks */
+  font-weight: lighter;
+}
+
+.custom-title {
+  color: #fff; /* Warna teks */
+  font-size: 14px; /* Ukuran teks */
+  font-weight: normal;
+
+}
+

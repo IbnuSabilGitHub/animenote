@@ -61,9 +61,9 @@ export default function AlFatihah() {
     const [loading, setLoading] = useState(true);
 
 
-    const showAlert = (step: number) => {
+    const showAlert = (title: string) => {
         Swal.fire({
-            title: `✅ Step ${step}!`,
+            title: title,
             toast: true,
             position: "bottom-end",
             showConfirmButton: false,
@@ -137,10 +137,10 @@ export default function AlFatihah() {
             <Stepper
                 initialStep={1}
                 onStepChange={(step) => {
-                    showAlert(step-1);
+                    showAlert(`✅ Step ${step-1} completed!`);
                 }}
                 onFinalStepCompleted={() => {
-                    console.log("All steps completed!")
+                    showAlert(`✅ All completed!`);
                     const timer = setTimeout(() => {
                         navigate("/Quiz");
                         clearTimeout(timer);

@@ -14,12 +14,15 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="user/:id" element={<UserProfile />} />
-          <Route path="Quiz" element={<Quiz />}/>
-          <Route path="Quiz/AlFatihah" element={<AlFatihah />} />
-          <Route path="*" element={<div>404 Not Found</div>} />
+          <Route path="Quiz" element={<Quiz />} />
         </Route>
+        <Route path="Quiz/AlFatihah" element={<AlFatihah />} />
+
+        {/* 404 page */}
+        <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </BrowserRouter>
   );
 }
+
 

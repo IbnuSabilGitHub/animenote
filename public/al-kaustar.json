@@ -1,0 +1,187 @@
+[
+    {
+        "step 1": 1,
+        "items": [
+            {
+                "id":1,
+                "words":[
+                {"word": "اِ نَّا"},
+                {"word": "sesungguhnya"},
+                {"word": "النَّاسِخ"},
+                {"word": "حَرْفٌ"},
+                {"uniqueId": "1-1"}
+                ]
+            },
+            {
+                "id":2,
+                "words":[
+                {"word": "اَعْطَيْ"},
+                {"word": "memberikan"},
+                {"word": "المَاضِيْ"},
+                {"word": "فِعْلٌ"},
+                {"uniqueId": "1-2"}
+                ]
+            },
+            {
+                "id":3,
+                "words":[
+                {"word": "نَا"},
+                {"word": "kami"},
+                {"word": "الضَمِيْر"},
+                {"word": "اِسْمٌ"},
+                {"uniqueId": "1-3"}
+                ]
+            },
+            {
+                "id":4,
+                "words":[
+                {"word": "كَ"},
+                {"word": "engkau"},
+                {"word": "الضَمِيْر"},
+                {"word": "اِسْمٌ"},
+                {"uniqueId": "1-4"}
+                ]
+            },
+            {
+                "id":5,
+                "words":[
+                {"word": "الكَوْثَرَ"},
+                {"word": "nikmat yang banyak"},
+                {"word": "الجَامِد"},
+                {"word": "اسْمٌ"},
+                {"uniqueId": "1-5"}
+                ]
+            }
+        ]
+    },
+    {
+        "step": 2,
+        "items": [
+            {
+                "id":1,
+                "words":[
+                {"word": "فَ"},
+                {"word": "maka"},
+                {"word": "العَطْفِ"},
+                {"word": "حَرْفُ"},
+                {"uniqueId": "2-1"}
+                ]
+            },
+            {
+                "id":2,
+                "words":[
+                {"word": "صَلَ"},
+                {"word": "salatlah"},
+                {"word": "الأَمْرِ"},
+                {"word": "فِعْلٌ"},
+                {"uniqueId": "2-2"}
+                ]
+            },
+            {
+                "id":3,
+                "words":[
+                {"word": "لِ"},
+                {"word": "bagi"},
+                {"word": "الجَرٍّ"},
+                {"word": "حَرْفٌ"},
+                {"uniqueId": "2-3"}
+                ]
+            },
+            {
+                "id":4,
+                "words":[
+                {"word": "رَبِّ"},
+                {"word": "Tuhan"},
+                {"word": "الجَامِد"},
+                {"word": "اسْمٌ"},
+                {"uniqueId": "2-4"}
+                ]
+            },
+            {
+                "id":5,
+                "words":[
+                {"word": "كَ"},
+                {"word": "kamu"},
+                {"word": "الضَمِيْر"},
+                {"word": "اِسْمٌ"},
+                {"uniqueId": "2-1"}
+                ]
+            },
+            {
+                "id":6,
+                "words":[
+                {"word": "و"},
+                {"word": "dan"},
+                {"word": "العَطْفِ"},
+                {"word": "حَرْفُ"},
+                {"uniqueId": "2-5"}
+                ]
+            },
+            {
+                "id":7,
+                "words":[
+                {"word": "اَنْحَرْ"},
+                {"word": "berkurbanlah"},
+                {"word": "الأَمْرِ"},
+                {"word": "فِعْلٌ"},
+                {"uniqueId": "2-6"}
+                ]
+            }
+        ]
+    },
+    {
+        "ayat": 3,
+        "items": [
+            {
+                "id":1,
+                "words":[
+                {"word": "اِنَّ"},
+                {"word": "sesungguhnya"},
+                {"word": "النَّاسِخ"},
+                {"word": "حَرْفٌ"},
+                {"uniqueId": "3-1"}
+                ]
+            },
+            {
+                "id":2,
+                "words":[
+                {"word": "شَانِئَ"},
+                {"word": "orang yang membenci"},
+                {"word": "المُشْتَق"},
+                {"word": "اسْمٌ"},
+                {"uniqueId": "3-2"}
+                ]
+            },
+            {
+                "id":3,
+                "words":[
+                {"word": "كَ"},
+                {"word": "kamu"},
+                {"word": "الضَمِيْر"},
+                {"word": "اِسْمٌ"},
+                {"uniqueId": "3-3"}
+                ]
+            },
+            {
+                "id":4,
+                "words":[
+                {"word": "هُوَ"},
+                {"word": "dia"},
+                {"word": "الضَمِيْر"},
+                {"word": "اِسْمٌ"},
+                {"uniqueId": "3-4"}
+                ]
+            },
+            {
+                "id":5,
+                "words":[
+                {"word": "الأَبْتَرَ"},
+                {"word": "terputus"},
+                {"word": "الجَامِد"},
+                {"word": "اسْمٌ"},
+                {"uniqueId": "3-5"}
+                ]
+            }
+        ]
+    }
+]

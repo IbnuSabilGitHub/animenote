@@ -144,7 +144,7 @@ export default function AlFatihah() {
                     const timer = setTimeout(() => {
                         navigate("/Quiz");
                         clearTimeout(timer);
-                    }, 1000);
+                    }, 3000);
                 }}
                 stepCircleContainerClassName="rounded-4xl"
                 triggersNext={allCorrect}

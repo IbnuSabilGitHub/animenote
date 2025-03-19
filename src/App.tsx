@@ -5,6 +5,7 @@ import About from './pages/about/About';
 import UserProfile from './pages/userprofile/UserProfile';
 import Quiz from './pages/quiz/Quiz';
 import AlFatihah from './pages/quiz/AlFatihah';
+import AlKaustar from './pages/quiz/AlKaustar';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="Quiz" element={<Quiz />} />
         </Route>
         <Route path="Quiz/AlFatihah" element={<AlFatihah />} />
+        <Route path="Quiz/AlKaustar" element={<AlKaustar />} />
 
         {/* 404 page */}
         <Route path="*" element={<div>404 Not Found</div>} />
